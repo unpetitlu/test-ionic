@@ -41,14 +41,20 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope, $firebaseObject) {
+.controller('PlaylistsCtrl', function($scope, serviceName) {
 
+  /*
   var ref = new Firebase("URL-DE-FIREBASE");
   var obj = $firebaseObject(ref.child('user'));
   // To make the data available in the DOM, assign it to $scope
   $scope.data = obj;
   // For three-way data bindings, bind it to the scope instead
   obj.$bindTo($scope, "data");
+  */
+
+  serviceName.doStuff().then(function(information){
+    $scope.data = information
+  });
 
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
